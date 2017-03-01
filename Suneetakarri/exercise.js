@@ -7,7 +7,7 @@ In your code do not use any "for loops" - use Array Callback style
 
 */
 
-exercise.maxEarnings = function() {
+//exercise.maxEarnings = function() {
 
     /* EX 1
 
@@ -16,34 +16,40 @@ exercise.maxEarnings = function() {
 
     */
 
-    var currentMax = 0.0;
-    var people = exercise.data.data;
-    var dataLength = people.length;
-    var currentSal;
+//     var currentMax = 0.0;
+//     var people = exercise.data.data;
+//     var dataLength = people.length;
+//     var currentSal;
 
-    for (var i = 0; i < dataLength; i++) {
-        currentSal = Number(exercise.data.data[i][18]);
-        if (currentMax < currentSal) {
-            currentMax = currentSal;
-        }
-    }
+//     for (var i = 0; i < dataLength; i++) {
+//         currentSal = Number(exercise.data.data[i][18]);
+//         if (currentMax < currentSal) {
+//             currentMax = currentSal;
+//         }
+//     }
 
-    return currentMax;
-};
+//     return currentMax;
+// };
 
-/* EX 1
+//  EX 1
 
-this gives you an example for the above
-you still need to write the functions getEarnings and findMax
+// this gives you an example for the above
+// you still need to write the functions getEarnings and findMax
 
 exercise.maxEarnings = function() {
     var people = exercise.data.data;
+    function getEarnings(people){
+        return people[18];
+    };
+
     var earnings = people.map(getEarnings);
-    var currentMax = earnings.reduce(findMax, 0);
+    var currentMax = Math.max(...earnings);
+    
     return currentMax;
+ //   return earnings;
 };
 
-*/
+
 
 exercise.earningsAbove = function(target) {
 
@@ -58,7 +64,7 @@ exercise.earningsAbove = function(target) {
     var num_salaraies = 0;
     var people = exercise.data.data; // get handle on data
 
-    return num_salaraies;
+    return num_salaries;
 };
 
 exercise.totalBasePayroll = function() {
