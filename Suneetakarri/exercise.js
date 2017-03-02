@@ -35,17 +35,25 @@ In your code do not use any "for loops" - use Array Callback style
 
 // this gives you an example for the above
 // you still need to write the functions getEarnings and findMax
-
+var getEarnings = function(people){
+    return Number(people[18]);
+};
 exercise.maxEarnings = function() {
     var people = exercise.data.data;
-    function getEarnings(people){
-        return people[18];
-    };
-
+    // function getEarnings(people){
+    //     return Number(people[18]);
+    // };
+    var fmax = function(previous, current){
+        if (current > previous )previous = current;
+        // console.log(previous);
+        return previous;
+    }
     var earnings = people.map(getEarnings);
-    var currentMax = Math.max(...earnings);
-    
-    return currentMax;
+    var cmax = earnings.reduce(fmax,0);
+
+    // var currentMax = Math.max(...earnings);
+
+    return cmax;
  //   return earnings;
 };
 
@@ -60,11 +68,16 @@ exercise.earningsAbove = function(target) {
     then return the length of the array
 
     */
+    var people = exercise.data.data;
+    var numSalary = people.map(getEarnings); // get handle on data
+    
+    var isAboveTargetSal = function(item){
+        var sal = (item>target);
+        return sal;
+        }
 
-    var num_salaraies = 0;
-    var people = exercise.data.data; // get handle on data
-
-    return num_salaries;
+    var myarray = numSalary.filter(isAboveTargetSal);
+    return myarray.length;
 };
 
 exercise.totalBasePayroll = function() {
